@@ -4,10 +4,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
-import { NbThemeModule } from '@nebular/theme';
+import {
+	NbDialogModule,
+	NbLayoutModule,
+	NbMenuModule,
+	NbThemeModule
+} from '@nebular/theme';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { CoreRoutingModule } from 'src/core/core-routing.module';
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, BrowserAnimationsModule, NbThemeModule.forRoot()],
+	imports: [
+		AppRoutingModule,
+		BrowserModule,
+		BrowserAnimationsModule,
+		CoreRoutingModule,
+		RouterModule,
+		NbLayoutModule,
+		NbThemeModule.forRoot(),
+		NbDialogModule.forRoot(),
+		NbMenuModule.forRoot()
+	],
 	providers: [],
 	bootstrap: [AppComponent]
 })
