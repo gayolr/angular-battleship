@@ -28,7 +28,7 @@ import { CoreRoutingModule } from 'src/core/core-routing.module';
 		NbDialogModule.forRoot(),
 		NbMenuModule.forRoot(),
 		NbToastrModule.forRoot({
-			position: NbGlobalLogicalPosition.BOTTOM_END,
+			position: NbGlobalLogicalPosition.TOP_END,
 			toastClass: 'toast-close'
 		})
 	],

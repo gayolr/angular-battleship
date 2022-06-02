@@ -4,19 +4,12 @@
 			<h1 class="content__title">Welcome to the game!</h1>
 			<hr />
 			<!-- shows when a player has won the game -->
-			<section
-				*ngIf="winner"
-				class="notification"
-				style="color: white"
-			>
+			<section *ngIf="winner" class="notification" style="color: white">
 				<h1>Player {{ winnerPlayer?.id }} has won the game!</h1>
 			</section>
 			<!-- table game board for each player -->
 			<div class="columns">
-				<div
-					class="column"
-					*ngFor="let board of boards; let i = index"
-				>
+				<div class="column" *ngFor="let board of boards; let i = index">
 					<div
 						class="player-wrapper"
 						[style.display]="i == playerTurn ? 'none' : 'flex'"
@@ -26,12 +19,17 @@
 							<span class="tag" *ngIf="i == playerTurn">You</span> //
 							<strong>SCORE: {{ board.player.score }}</strong>
 						</h5>
-						<table class="table" [style.opacity]="i == playerTurn ? 0.5 : 1">
+						<table
+							cellspacing="0"
+							class="table"
+							[style.opacity]="i == playerTurn ? 0.5 : 1"
+						>
 							<tr *ngFor="let row of board.tiles; let j = index">
 								<td
 									*ngFor="let col of row; let k = index"
 									(click)="fireTorpedo({i,j,k}, col.header)"
-									[style.background-color]="col.used ? '' : 'transparent'"
+									[ngClass]="col.used ? 'used' : 'transparent'"
+                           [ngClass]="col.display ? 'header' : 'cell'"
 									[class.win]="col.status == 'win'"
 									class="battleship__tile"
 									id="t{{ i }}{{ j }}{{ k }}"
