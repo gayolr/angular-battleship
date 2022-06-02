@@ -1,0 +1,20 @@
+<nb-layout>
+	<nb-layout-header
+		>Scoreboard<button nbButton [routerLink]="'./configuration'">
+			Configure Game</button
+		><button nbButton routerLink="">Go back to Game</button></nb-layout-header
+	>
+	<nb-layout-column class="colored-column-basic">
+		<nb-card>
+			<nb-card-header>Best Scores in the game</nb-card-header>
+			<nb-card-body>
+				<nb-list>
+					<nb-list-item *ngFor="let player of players; let i = index">
+						{{ i + 1 }} {{ player.name }} {{ player.date }}
+					</nb-list-item>
+				</nb-list>
+			</nb-card-body>
+		</nb-card>
+	</nb-layout-column>
+	<nb-layout-footer>GayolR</nb-layout-footer>
+</nb-layout>

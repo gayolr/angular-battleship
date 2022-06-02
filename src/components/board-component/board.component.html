@@ -15,7 +15,7 @@
 				<button nbButton (click)="restartGame()">Restart Game</button>
 			</section>
 			<!-- table game board for each player -->
-			<div *ngIf="!gameOver" class="columns">
+			<div *ngIf="!gameOver || !winner" class="columns">
 				<div class="column" *ngFor="let board of boards; let i = index">
 					<div
 						class="player-wrapper"

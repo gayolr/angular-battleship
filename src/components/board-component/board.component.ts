@@ -27,6 +27,10 @@ export class BoardComponent {
 		level: 'infinity',
 		turnsGame: 50
 	};
+	winnersGame: { name: string; date: Date } = {
+		name: 'Test',
+		date: new Date()
+	};
 	turnCont = 0;
 	constructor(
 		private toastr: NbToastrService,
@@ -102,6 +106,14 @@ export class BoardComponent {
 
 		if (this.boardService.isWinnerValid()) {
 			this.winnerPlayer = this.boardService.getWinnerPlayer();
+			let winnerArray = [] as any;
+			winnerArray = JSON.parse(localStorage.getItem('winnersGame') as any);
+			if (winnerArray !== null) {
+				winnerArray.push({ name: this.gameId, date: new Date() });
+				localStorage.setItem('winnersGame', JSON.stringify(winnerArray));
+			} else {
+				localStorage.setItem('winnersGame', JSON.stringify([{ name: this.gameId, date: new Date() }]));
+			}
 			this.toastr.danger('Game is over');
 			return (this.winner = true);
 		}
