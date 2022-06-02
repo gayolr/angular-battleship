@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 
 import {
 	NbDialogModule,
+	NbGlobalLogicalPosition,
 	NbLayoutModule,
 	NbMenuModule,
-	NbThemeModule
+	NbThemeModule,
+	NbToastrModule
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +26,11 @@ import { CoreRoutingModule } from 'src/core/core-routing.module';
 		NbLayoutModule,
 		NbThemeModule.forRoot(),
 		NbDialogModule.forRoot(),
-		NbMenuModule.forRoot()
+		NbMenuModule.forRoot(),
+		NbToastrModule.forRoot({
+			position: NbGlobalLogicalPosition.BOTTOM_END,
+			toastClass: 'toast-close'
+		})
 	],
 	providers: [],
 	bootstrap: [AppComponent]

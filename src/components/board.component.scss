@@ -1,0 +1,32 @@
+.content {
+   &__title {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+   }
+}
+.player-wrapper {
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+table {
+   .table {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+   }
+   td {
+      cursor: pointer;
+   }
+}
+
+.players {
+   &__title {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+   }
+}
