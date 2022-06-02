@@ -19,7 +19,31 @@ table {
       justify-content: center;
    }
    td {
+      align-items: center;
+      border: 1px solid #b2b5b5;
       cursor: pointer;
+      text-align: center;
+      height: 30px;
+      width: 30px;
+      &.used {
+         background-color: lightblue;
+      }
+
+      &.transparent {
+         background-color: transparent;
+      }
+      &.header {
+         background-color: grey;
+         &:hover {
+            border: 1px solid #fff;
+         }
+      }
+      &.win {
+         background-color: rgb(20, 20, 20);
+      }
+      &:hover {
+         border: 1px solid #fff;
+      }
    }
 }
 
