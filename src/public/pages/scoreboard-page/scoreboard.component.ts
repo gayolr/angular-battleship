@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ScoreboardComponent {
 	constructor() {}
+	players: any;
+	ngOnInit() {
+		this.players = JSON.parse(localStorage.getItem('winnersGame') as any);
+	}
 }

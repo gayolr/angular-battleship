@@ -1,0 +1,10 @@
+::ng-deep {
+   .nb-theme-default .layout {
+      nb-layout-header {
+         nav {
+            display: flex;
+            justify-content: space-between;
+         }
+      }
+   }
+}
