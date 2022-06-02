@@ -1,0 +1,42 @@
+<nb-layout>
+	<nb-layout-header>Configure Game</nb-layout-header>
+	<nb-layout-column class="colored-column-basic">
+		<form [formGroup]="form">
+			<nb-card>
+				<nb-card-header>Choose number of turns</nb-card-header>
+				<nb-card-body class="example-items-col">
+					<input
+						type="number"
+						nbInput
+						min="50"
+						max="200"
+						fullWidth
+						formControlName="turnsGame"
+						status="basic"
+						placeholder="50"
+					/>
+				</nb-card-body>
+			</nb-card>
+			<nb-card>
+				<nb-card-header>Choose difficulty of the game</nb-card-header>
+				<nb-card-body class="example-items-col">
+					<nb-select
+						placeholder="Select Showcase"
+						size="large"
+						formControlName="level"
+					>
+						<nb-option value="">Default</nb-option>
+						<nb-option value="infinity">Easy (Turns 200)</nb-option>
+						<nb-option value="medium">Medium (Turns 100)</nb-option>
+						<nb-option value="hard">Hard (Turns 50)</nb-option>
+					</nb-select>
+				</nb-card-body>
+			</nb-card>
+			<button nbButton routerLink="">Go back</button>
+			<button nbButton (click)="submit()" hero status="primary">
+				Save Configuration
+			</button>
+		</form>
+	</nb-layout-column>
+	<nb-layout-footer>GayolR</nb-layout-footer>
+</nb-layout>

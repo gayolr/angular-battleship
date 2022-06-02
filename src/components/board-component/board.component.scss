@@ -5,6 +5,13 @@
       justify-content: center;
    }
 }
+
+.notification {
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
 .player-wrapper {
    align-items: center;
    display: flex;

@@ -1,7 +1,12 @@
 <nb-layout>
-	<nb-layout-header>Ready to sink some battleships?</nb-layout-header>
+	<nb-layout-header
+		>Ready to sink some battleships?
+		<button nbButton [routerLink]="'./configuration'">
+			Configure Game
+		</button></nb-layout-header
+	>
 	<nb-layout-column class="colored-column-basic">
-		<board-component></board-component>
+		<board-component *ngIf="configGame"></board-component>
 	</nb-layout-column>
 	<nb-layout-footer>GayolR</nb-layout-footer>
 </nb-layout>

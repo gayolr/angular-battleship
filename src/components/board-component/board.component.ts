@@ -1,4 +1,5 @@
 import { Component, NgIterable } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { BoardService } from 'src/core/services/board.service';
 
@@ -17,11 +18,16 @@ export class BoardComponent {
 	canPlayPlayerTwo: boolean = false;
 	canPlayPlayerOne: boolean = false;
 	winner: boolean = false;
+	gameOver: boolean = false;
 	player: number = 0;
 	players: number = 2;
 	gameId: string = '';
 	winnerPlayer: { id: number; score: number } = { id: 1, score: 0 };
-
+	configGame: { level: string; turnsGame: number } = {
+		level: 'infinity',
+		turnsGame: 50
+	};
+	turnCont = 0;
 	constructor(
 		private toastr: NbToastrService,
 		private boardService: BoardService
@@ -31,6 +37,7 @@ export class BoardComponent {
 	}
 
 	initGame() {
+		this.configGame = JSON.parse(localStorage.getItem('configGame') as any);
 		let id = this.getQueryParam('id');
 		if (!id) {
 			id = this.getUniqueId();
@@ -87,6 +94,12 @@ export class BoardComponent {
 			return false;
 		}
 
+		if (this.configGame.turnsGame === this.turnCont) {
+			this.gameOver = true;
+			this.toastr.danger('Game is over');
+			return false;
+		}
+
 		if (this.boardService.isWinnerValid()) {
 			this.winnerPlayer = this.boardService.getWinnerPlayer();
 			this.toastr.danger('Game is over');
@@ -110,6 +123,7 @@ export class BoardComponent {
 		}
 		this.setPlayer();
 		this.boardService.changePlayer();
+		this.turnCont = this.turnCont + 1;
 		return true;
 	}
 
@@ -126,6 +140,10 @@ export class BoardComponent {
 
 	getUniqueId() {
 		return 'Player-' + Math.random().toString(36).substr(2, 8);
+	}
+
+	restartGame() {
+		location.reload();
 	}
 
 	get boards(): NgIterable<any> {
