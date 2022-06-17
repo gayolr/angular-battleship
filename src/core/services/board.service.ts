@@ -40,6 +40,27 @@ export class BoardService {
 				}
 			}
 		}
+		this.createRandomShips(tiles)
+		let totalShips = 0;
+		tiles.forEach(val =>
+			val.forEach(val => {
+				if (val.value === 1) {
+					totalShips = + totalShips + 1;
+				}
+			})
+		);
+		if (totalShips !== 10) {
+			return location.reload();
+		}
+		// create board
+		let board = new Board({
+			player: new Player({ id: this.playerId++ }),
+			tiles: tiles
+		});
+		this.boards.push(board);
+	}
+
+	createRandomShips(tiles: any) {
 		// create ships
 		let ships = [];
 		ships[0] = 4;
@@ -57,13 +78,6 @@ export class BoardService {
 			}
 			while (!this.addShip(tiles, i, direction, ships));
 		}
-
-		// create board
-		let board = new Board({
-			player: new Player({ id: this.playerId++ }),
-			tiles: tiles
-		});
-		this.boards.push(board);
 	}
 
 	addShip(board: any, shipSize: number, direction: number, ships: number[]) {
